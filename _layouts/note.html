@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<article>
+  <h1>{{ page.title }}</h1>
+
+  <div class="post-meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    {% if page.topics %}
+      <span class="post-topics">
+        {% for topic in page.topics %}
+          <a href="/topics/{{ topic | slugify }}/" class="tag">{{ topic }}</a>
+        {% endfor %}
+      </span>
+    {% endif %}
+  </div>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <hr>
+
+  <p class="small">
+    Written by Trevor Postma.
+    {% if site.twitter %}Follow on <a href="https://twitter.com/{{ site.twitter }}" target="_blank">Twitter</a>,{% endif %}
+    subscribe via <a href="/rss.xml">RSS</a> or <a href="/feed.json">JSON feed</a>.
+  </p>
+</article>

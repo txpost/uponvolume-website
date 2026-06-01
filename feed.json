@@ -1,0 +1,26 @@
+---
+layout: null
+permalink: /feed.json
+---
+{% assign notes = site.notes | sort: 'date' | reverse %}
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": {{ site.title | smartify | jsonify }},
+    "description": {{ site.metadescription | smartify | jsonify }},
+    "home_page_url": "{{ site.url }}/",
+    "feed_url": "{{ site.url }}/feed.json",
+    "expired": false,
+    "items": [
+{% for post in notes %}
+        {
+            "id": "{{ site.url }}{{ post.url }}",
+            "title": {{ post.title | smartify | jsonify }},
+            "content_html": {{ post.content | jsonify }},
+            "url": "{{ site.url }}{{ post.url }}",
+            {% if post.description %}"summary": {{ post.description | smartify | jsonify }},{% endif %}
+            "date_published": "{{ post.date | date_to_xmlschema }}",
+            "author": { "name": "{{ site.author }}" }
+        }{% unless forloop.last == true %},{% endunless %}
+{% endfor %}
+    ]
+}

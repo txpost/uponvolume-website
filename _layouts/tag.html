@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<h2><a href="/" class="muted internal-link">All</a> <span class="faint">/</span> {{ page.tag | capitalize }}</h2>
+
+{% assign notes = site.notes | sort: 'date' | reverse %}
+<ul class="post-list">
+  {% for post in notes %}
+    {% if post.topics contains page.tag %}
+      <li>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <span class="post-title"><a href="{{ post.url }}" class="internal-link">{{ post.title }}</a></span>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
