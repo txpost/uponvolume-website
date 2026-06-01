@@ -1,6 +1,6 @@
 # uponvolume.com
 
-Trevor Postma's personal site and blog. Trader notes, writing, and occasional rants. Lives at [uponvolume.com](https://uponvolume.com).
+Trevor's personal site and blog. Trader notes, writing, and occasional rants. Lives at [uponvolume.com](https://uponvolume.com).
 
 Built with Jekyll. Deployed to GitHub Pages via GitHub Actions. Site bones cloned from Steph Ango's [stephango.com](https://stephango.com) / [slashpackaging](https://github.com/kepano/slashpackaging) approach — same minimal Jekyll structure, adapted for blog posts (a `notes` collection instead of a `directory` collection) and with topics taxonomy instead of business tags.
 

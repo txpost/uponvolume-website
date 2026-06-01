@@ -5,7 +5,7 @@ id: about
 permalink: /about
 ---
 
-I'm **Trevor Postma**. I'm an engineer turned trader, living in Canada with my partner Julianne.
+I'm **Trevor**.
 
 This site is where I publish whatever's worth publishing. Mostly: notes from my trading practice — what I'm watching, what I bought, what I sold, what worked, what didn't, and the patterns I keep noticing. Occasionally: writing about how I work, what I'm building, or the stack of tools I use day-to-day.
 
