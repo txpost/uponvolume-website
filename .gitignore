@@ -1,4 +1,10 @@
-# OS files
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/
+
+# OS noise
 .DS_Store
 .DS_Store?
 ._*
@@ -8,15 +14,15 @@ ehthumbs.db
 Thumbs.db
 Desktop.ini
 
-# Editor directories and files
+# Editor noise
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 .project
 .classpath
 .settings/
+*.swp
+*.swo
+*~
 
 # Logs
 *.log
@@ -29,3 +35,5 @@ yarn-error.log*
 *.temp
 .cache/
 
+# Local Ruby (bundler) install
+.bundle/

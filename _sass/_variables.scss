@@ -1,0 +1,51 @@
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, "Inter", "IBM Plex Sans", Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --border-radius: 4px;
+
+  --font-small: 0.933em;
+  --font-smaller: 0.875em;
+  --font-smallest: 0.8em;
+
+  --paragraph-max-width: 35em;
+}
+
+// Light theme — warm cream background, dark text, teal accent
+:root {
+  --color-background-primary: #FAF8F5;
+  --color-background-secondary: rgba(0, 0, 0, 0.05);
+  --color-background-hover: hsla(195, 70%, 35%, 0.10);
+  --color-selection: hsla(195, 70%, 35%, 0.10);
+
+  --color-primary: #2C2416;
+
+  --color-muted: rgba(72, 60, 40, 0.65);
+  --color-faint: rgba(72, 60, 40, 0.35);
+
+  --color-action: #1f6f86;
+  --color-action-muted: hsla(195, 70%, 35%, 0.65);
+  --color-action-faint: hsla(195, 70%, 35%, 0.35);
+
+  --color-outline: rgba(72, 60, 40, 0.18);
+  --color-outline-hover: #d8d4cc;
+  --color-outline-active: #c7c2b8;
+}
+
+// Dark theme — deep slate, warm muted text, lighter teal accent
+.theme-dark {
+  --color-background-primary: #1c1f24;
+  --color-background-secondary: rgba(255, 255, 255, 0.05);
+
+  --color-primary: #e6e1d4;
+
+  --color-muted: rgba(190, 180, 155, 0.75);
+  --color-faint: rgba(190, 180, 155, 0.40);
+
+  --color-action: #5fb3c6;
+  --color-action-muted: hsla(192, 45%, 60%, 0.65);
+  --color-action-faint: hsla(192, 45%, 60%, 0.35);
+
+  --color-outline: rgba(190, 180, 155, 0.18);
+  --color-outline-hover: #d8d4cc;
+  --color-outline-active: #c7c2b8;
+}

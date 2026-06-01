@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+<article>
+  <div style="max-width: 35em">
+    {{ content }}
+  </div>
+</article>
+
+{% assign notes = site.notes | sort: 'date' | reverse %}
+
+{% if notes.size > 0 %}
+  {% assign hero = notes | first %}
+
+  <div class="post-hero">
+    <div class="post-hero-label">Latest</div>
+    <h2><a href="{{ hero.url }}" class="internal-link plain">{{ hero.title }}</a></h2>
+    <div class="post-hero-meta">
+      {{ hero.date | date: "%B %-d, %Y" }}
+      {% if hero.topics %} · {% for topic in hero.topics %}<a href="/topics/{{ topic | slugify }}/" class="tag">{{ topic }}</a> {% endfor %}{% endif %}
+    </div>
+    {% if hero.description %}
+      <p>{{ hero.description }}</p>
+    {% else %}
+      <p>{{ hero.excerpt | strip_html | truncatewords: 30 }}</p>
+    {% endif %}
+    <p><a href="{{ hero.url }}" class="internal-link">Keep reading &rarr;</a></p>
+  </div>
+
+  {% if notes.size > 1 %}
+    <h3>Recent writing</h3>
+    <ul class="post-list">
+      {% for post in notes offset: 1 limit: 10 %}
+        <li>
+          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <span class="post-title"><a href="{{ post.url }}" class="internal-link">{{ post.title }}</a></span>
+        </li>
+      {% endfor %}
+    </ul>
+    {% if notes.size > 11 %}
+      <p><a href="/writing" class="internal-link">All writing &rarr;</a></p>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{% assign topics = site.notes | map: 'topics' | join: ',' | split: ',' | uniq | sort %}
+{% if topics.size > 0 %}
+  <h3>Topics</h3>
+  <div class="topic-grid">
+    {% for topic in topics %}
+      {% assign t = topic | strip %}
+      {% if t != "" %}
+        <a href="/topics/{{ t | slugify }}/" class="tag">{{ t }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
