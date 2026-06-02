@@ -36,6 +36,23 @@
   .post-title {
     flex-grow: 1;
   }
+
+  // Year heading rows inside the home-page archive list. Re-uses the .post-list
+  // container so the year markers sit inline with the post rows but render as
+  // section dividers (no border, larger top margin, no date column).
+  .post-year-heading {
+    display: block;
+    border: 0;
+    padding: 1.5em 0 0.25em;
+    font-size: var(--font-smaller);
+    color: var(--color-muted);
+    letter-spacing: 0.05em;
+
+    &:first-child {
+      border-top: 0;
+      padding-top: 0.5em;
+    }
+  }
 }
 
 .post-hero {
