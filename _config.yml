@@ -1,7 +1,7 @@
 name:                Trevor
 title:               Up on Volume
 author:              Trevor
-twitter:             "@UpOnVolume"
+twitter:             UpOnVolume
 domain:              uponvolume.com
 url:                 https://uponvolume.com
 include:             ['_pages']
