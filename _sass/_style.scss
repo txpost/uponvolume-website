@@ -1,3 +1,9 @@
+// Global page chrome. Matches stephango.com's body/layout geometry:
+// the body itself is full-width and centered via 2vw auto margin; content
+// width is governed by the nav/article/heading wrappers each having
+// width: --wrap-normal (37em) and max-width: --wrap-wide (54em). Body
+// padding is 2rem top + 24rem bottom for the long scroll runway Steph uses.
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -13,62 +19,96 @@ html {
 }
 
 body {
+  color-scheme: light dark;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--color-background-primary);
-  font-family: var(--font-family);
-  margin: 0 auto;
-  line-height: 1.5;
-  padding: 4vh 6vw;
+  background-color: var(--color-bg-primary);
+  font-family: var(--font-content);
+  margin: 2vw auto 0 auto;
+  line-height: var(--line-height);
+  padding: 2rem 0 24rem;
   overflow-x: hidden;
   font-size: 1.8rem;
   font-size: calc(1.5rem + 0.25vw);
-  max-width: 56em;
-  color: var(--color-primary);
+  color: var(--color-tx-normal);
   transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+// Content wrappers all share the same width strategy: --wrap-normal width
+// (the readable column) with --wrap-wide as a max bound for occasional
+// wider blocks. Auto margins center them in the body.
+nav,
+article,
+heading,
+main > .post-hero,
+main > .post-list,
+main > .topic-list,
+main > .section-label,
+main > hr.section-divider {
+  display: block;
+  width: var(--wrap-normal);
+  max-width: var(--wrap-wide);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav {
+  margin: 0 auto 3em;  // Steph: nav sits flush, no border below
+}
+
+main {
+  display: block;
+}
+
+footer {
+  margin: 2em auto;
+  max-width: var(--wrap-wide);
+  width: var(--wrap-normal);
+  padding-top: 1em;
+  font-size: var(--font-smaller);
 }
 
 small {
   display: inline-block;
   font-size: var(--font-smallest);
   line-height: 1.4;
-  color: var(--color-muted);
+  color: var(--color-tx-muted);
 }
 
 .small {
   font-size: var(--font-smaller);
   line-height: 1.4;
-  color: var(--color-muted);
-}
-
-footer {
-  margin: 4em 0 2em;
-  padding-top: 2em;
-  border-top: 1px solid var(--color-outline);
-  font-size: var(--font-smaller);
+  color: var(--color-tx-muted);
 }
 
 img {
   max-width: 100%;
   max-height: 75vh;
   border-radius: var(--border-radius);
+  display: block;
 }
 
 iframe,
 video {
   border-radius: var(--border-radius);
+  display: block;
 }
 
 blockquote {
   padding-left: 1.5em;
   margin: 1.5em 0;
-  border-left: 2px solid var(--color-primary);
+  border-left: 2px solid var(--color-tx-normal);
 
   p { margin: 0; }
 }
 
-p, li {
-  max-width: var(--paragraph-max-width);
+p {
+  max-width: var(--wrap-normal);
+}
+
+mark {
+  background-color: var(--color-highlight);
+  color: var(--color-tx-normal);
 }
 
 /* Align */
@@ -79,36 +119,35 @@ p, li {
 .vt { vertical-align: top; }
 
 /* Borders */
-.ba { border: 1px solid var(--color-outline); }
-.bt { border-top: 1px solid var(--color-outline); }
-.br { border-right: 1px solid var(--color-outline); }
-.bb { border-bottom: 1px solid var(--color-outline); }
-.bl { border-left: 1px solid var(--color-outline); }
+.ba { border: 1px solid var(--color-ui-normal); }
+.bt { border-top: 1px solid var(--color-ui-normal); }
+.br { border-right: 1px solid var(--color-ui-normal); }
+.bb { border-bottom: 1px solid var(--color-ui-normal); }
+.bl { border-left: 1px solid var(--color-ui-normal); }
 
 hr {
   width: 100%;
   border: 0;
   height: 1px;
   margin: 1.5em 0;
-  background: var(--color-outline);
+  background: var(--color-ui-normal);
 }
 
-/* Typography */
-.muted { color: var(--color-muted); }
-.faint { color: var(--color-faint); }
-
-nav {
-  margin: 1em 0 3em;
-}
+/* Typography helpers */
+.muted { color: var(--color-tx-muted); }
+.faint { color: var(--color-tx-faint); }
+.action { color: var(--color-action); }
+.font-medium { font-weight: 500; }
+.font-normal { font-weight: 400; }
 
 table {
-  border-top: 1px solid var(--color-outline);
+  border-top: 1px solid var(--color-ui-normal);
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-tr { border-bottom: 1px solid var(--color-outline); }
+tr { border-bottom: 1px solid var(--color-ui-normal); }
 td { padding: 0.5em 0; }
 
 .flex          { display: flex; }
@@ -118,9 +157,10 @@ td { padding: 0.5em 0; }
 .flex-shrink   { flex-shrink: 1; }
 
 code {
-  background: var(--color-background-secondary);
+  background: var(--color-bg-secondary);
   padding: 0.1em 0.2em;
   border-radius: 4px;
+  font-family: var(--font-mono);
 }
 
 .mh {

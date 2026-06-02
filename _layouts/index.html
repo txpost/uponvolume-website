@@ -5,9 +5,7 @@ layout: default
 {% assign trimmed = content | strip %}
 {% if trimmed != "" %}
 <article>
-  <div style="max-width: 35em">
-    {{ content }}
-  </div>
+  {{ content }}
 </article>
 {% endif %}
 
@@ -15,8 +13,6 @@ layout: default
 
 {% if notes.size > 0 %}
   {% assign hero = notes | first %}
-
-  <hr class="section-divider">
 
   <div class="post-hero">
     <p class="section-label">Latest</p>

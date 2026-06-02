@@ -1,51 +1,132 @@
+// Color tokens and typography variables.
+// Aligned to stephango.com's Flexoki palette (https://stephango.com/flexoki)
+// 2026-06-03. Steph's site is closed-source but his compiled CSS is public;
+// the variable names below are the ones already used throughout this site's
+// Sass partials, rebound to Flexoki hex values. Steph's own variable names
+// (--color-bg-primary, --color-tx-normal, etc.) are exposed as aliases so
+// future copy-paste from stephango.com's source Just Works.
+
 :root {
+  // ---- Flexoki raw palette --------------------------------------------------
+  // Source of truth: kepano/flexoki css/flexoki.css. Don't edit hex values
+  // here without checking the canonical Flexoki spec.
+  --flexoki-black:           #100F0F;
+  --flexoki-paper:           #FFFCF0;
+
+  --flexoki-50:              #F2F0E5;
+  --flexoki-100:             #E6E4D9;
+  --flexoki-150:             #DAD8CE;
+  --flexoki-200:             #CECDC3;
+  --flexoki-300:             #B7B5AC;
+  --flexoki-400:             #9F9D96;
+  --flexoki-500:             #878580;
+  --flexoki-600:             #6F6E69;
+  --flexoki-700:             #575653;
+  --flexoki-800:             #403E3C;
+  --flexoki-850:             #343331;
+  --flexoki-900:             #282726;
+  --flexoki-950:             #1C1B1A;
+
+  --flexoki-cyan-50:         #DDF1E4;
+  --flexoki-cyan-100:        #BFE8D9;
+  --flexoki-cyan-400:        #3AA99F;
+  --flexoki-cyan-600:        #24837B;
+  --flexoki-cyan-950:        #101F1D;
+
+  --flexoki-red-400:         #D14D41;
+  --flexoki-red-600:         #AF3029;
+
+  --flexoki-yellow-100:      #F6E2A0;
+  --flexoki-yellow-900:      #3A2D04;
+
+  // ---- Layout + typography --------------------------------------------------
   --font-family: -apple-system, BlinkMacSystemFont, "Inter", "IBM Plex Sans", Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --font-content: var(--font-family);
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", "IBM Plex Mono", "Roboto Mono", Menlo, Monaco, "Consolas", "Source Code Pro", monospace;
+
   --border-radius: 4px;
 
-  --font-small: 0.933em;
-  --font-smaller: 0.875em;
-  --font-smallest: 0.8em;
+  --font-small:    0.875em;
+  --font-smaller:  0.8em;
+  --font-smallest: 0.75em;
+  --line-height:   1.5;
 
-  --paragraph-max-width: 35em;
+  // Page widths — these match stephango.com exactly. --wrap-normal is the
+  // body / paragraph width (37em ≈ 593px at base font); --wrap-wide is for
+  // wider blocks like figures and the post hero. Replaces the previous
+  // --paragraph-max-width: 35em.
+  --wrap-normal: 37em;
+  --wrap-wide:   54em;
+  --paragraph-max-width: var(--wrap-normal); // back-compat alias
+  --heading-weight: 500;
+
+  @media (max-width: 860px) {
+    --wrap-normal: 88vw;
+    --wrap-wide:   100vw;
+    --heading-weight: 600;
+  }
 }
 
-// Light theme — warm cream background, dark text, teal accent
-:root {
-  --color-background-primary: #FAF8F5;
-  --color-background-secondary: rgba(0, 0, 0, 0.05);
-  --color-background-hover: hsla(195, 70%, 35%, 0.10);
-  --color-selection: hsla(195, 70%, 35%, 0.10);
+// ---- Light theme (default) --------------------------------------------------
+:root,
+.theme-light {
+  // Steph's canonical names — preferred going forward
+  --color-bg-primary:    var(--flexoki-paper);
+  --color-bg-secondary:  var(--flexoki-50);
+  --color-tx-normal:     var(--flexoki-black);
+  --color-tx-muted:      var(--flexoki-600);
+  --color-tx-faint:      var(--flexoki-300);
+  --color-ui-normal:     var(--flexoki-100);
+  --color-ui-hover:      var(--flexoki-150);
+  --color-ui-active:     var(--flexoki-200);
+  --color-highlight:     var(--flexoki-yellow-100);
+  --color-bg-hover:      var(--flexoki-cyan-50);
+  --color-selection:     rgba(187, 220, 206, 0.3);
+  --color-action:        var(--flexoki-cyan-600);
+  --color-action-hover:  var(--flexoki-cyan-400);
 
-  --color-primary: #2C2416;
-
-  --color-muted: rgba(72, 60, 40, 0.65);
-  --color-faint: rgba(72, 60, 40, 0.35);
-
-  --color-action: #1f6f86;
-  --color-action-muted: hsla(195, 70%, 35%, 0.65);
-  --color-action-faint: hsla(195, 70%, 35%, 0.35);
-
-  --color-outline: rgba(72, 60, 40, 0.18);
-  --color-outline-hover: #d8d4cc;
-  --color-outline-active: #c7c2b8;
+  // Back-compat aliases — match the old variable names used elsewhere in
+  // this codebase. New code should prefer the names above.
+  --color-background-primary:   var(--color-bg-primary);
+  --color-background-secondary: var(--color-bg-secondary);
+  --color-background-hover:     var(--color-bg-hover);
+  --color-primary:              var(--color-tx-normal);
+  --color-muted:                var(--color-tx-muted);
+  --color-faint:                var(--color-tx-faint);
+  --color-outline:              var(--color-ui-normal);
+  --color-outline-hover:        var(--color-ui-hover);
+  --color-outline-active:       var(--color-ui-active);
+  --color-action-muted:         var(--color-action-hover);
+  --color-action-faint:         var(--color-action-hover);
 }
 
-// Dark theme — deep slate, warm muted text, lighter teal accent
+// ---- Dark theme -------------------------------------------------------------
 .theme-dark {
-  --color-background-primary: #1c1f24;
-  --color-background-secondary: rgba(255, 255, 255, 0.05);
+  --color-bg-primary:    var(--flexoki-black);
+  --color-bg-secondary:  var(--flexoki-950);
+  --color-tx-normal:     var(--flexoki-200);
+  --color-tx-muted:      var(--flexoki-500);
+  --color-tx-faint:      var(--flexoki-700);
+  --color-ui-normal:     var(--flexoki-900);
+  --color-ui-hover:      var(--flexoki-850);
+  --color-ui-active:     var(--flexoki-800);
+  --color-highlight:     var(--flexoki-yellow-900);
+  --color-bg-hover:      var(--flexoki-cyan-950);
+  --color-selection:     rgba(30, 95, 91, 0.3);
+  --color-action:        var(--flexoki-cyan-400);
+  --color-action-hover:  var(--flexoki-cyan-600);
 
-  --color-primary: #e6e1d4;
-
-  --color-muted: rgba(190, 180, 155, 0.75);
-  --color-faint: rgba(190, 180, 155, 0.40);
-
-  --color-action: #5fb3c6;
-  --color-action-muted: hsla(192, 45%, 60%, 0.65);
-  --color-action-faint: hsla(192, 45%, 60%, 0.35);
-
-  --color-outline: rgba(190, 180, 155, 0.18);
-  --color-outline-hover: #d8d4cc;
-  --color-outline-active: #c7c2b8;
+  // Back-compat aliases
+  --color-background-primary:   var(--color-bg-primary);
+  --color-background-secondary: var(--color-bg-secondary);
+  --color-background-hover:     var(--color-bg-hover);
+  --color-primary:              var(--color-tx-normal);
+  --color-muted:                var(--color-tx-muted);
+  --color-faint:                var(--color-tx-faint);
+  --color-outline:              var(--color-ui-normal);
+  --color-outline-hover:        var(--color-ui-hover);
+  --color-outline-active:       var(--color-ui-active);
+  --color-action-muted:         var(--color-action-hover);
+  --color-action-faint:         var(--color-action-hover);
 }
