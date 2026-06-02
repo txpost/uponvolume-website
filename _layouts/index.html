@@ -14,18 +14,20 @@ layout: default
 {% if notes.size > 0 %}
   {% assign hero = notes | first %}
 
-  <div class="post-hero">
-    <p class="section-label">Latest</p>
-    <h2><a href="{{ hero.url }}" class="internal-link plain">{{ hero.title }}</a></h2>
-    <div class="post-hero-meta">
-      {{ hero.date | date: "%B %-d, %Y" }}
-      {% if hero.read_time %} · {{ hero.read_time }}{% endif %}
+  <a href="{{ hero.url }}" class="post-hero-link plain">
+    <div class="post-hero">
+      <p class="section-label">Latest</p>
+      <h2>{{ hero.title }}</h2>
+      <div class="post-hero-meta">
+        {{ hero.date | date: "%B %-d, %Y" }}
+        {% if hero.read_time %} · {{ hero.read_time }}{% endif %}
+      </div>
+      <p class="post-hero-body">
+        {% if hero.description %}{{ hero.description }}{% else %}{{ hero.excerpt | strip_html | truncatewords: 30 }}{% endif %}
+        Keep reading &rarr;
+      </p>
     </div>
-    <p class="post-hero-body">
-      {% if hero.description %}{{ hero.description }}{% else %}{{ hero.excerpt | strip_html | truncatewords: 30 }}{% endif %}
-      <a href="{{ hero.url }}" class="internal-link">Keep reading &rarr;</a>
-    </p>
-  </div>
+  </a>
 {% endif %}
 
 {% assign topics = site.notes | map: 'topics' | join: ',' | split: ',' | uniq | sort %}
@@ -53,4 +55,5 @@ layout: default
       </li>
     {% endfor %}
   </ul>
+  <hr class="section-divider">
 {% endif %}

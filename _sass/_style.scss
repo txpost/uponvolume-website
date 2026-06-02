@@ -38,9 +38,11 @@ body {
 // (the readable column) with --wrap-wide as a max bound for occasional
 // wider blocks. Auto margins center them in the body.
 nav,
+footer,
 article,
 heading,
 main > .post-hero,
+main > .post-hero-link,
 main > .post-list,
 main > .topic-list,
 main > .section-label,
@@ -61,11 +63,11 @@ main {
 }
 
 footer {
-  margin: 2em auto;
-  max-width: var(--wrap-wide);
-  width: var(--wrap-normal);
+  margin-top: 2em;
+  margin-bottom: 2em;
   padding-top: 1em;
-  font-size: var(--font-smaller);
+
+  > div { font-size: var(--font-smaller); }
 }
 
 small {
@@ -134,10 +136,14 @@ hr {
 }
 
 // Top-level dividers in <main> (section breaks between Latest / Topics /
-// Writing on the home page) get more breathing room — matches Steph's
-// `main > hr { margin: 4em 0 }`.
+// Writing on the home page) get more breathing room. NOTE: must use
+// `auto` for left/right margin so the divider stays horizontally
+// centered within <main> — using `0` here pins the divider to <main>'s
+// left edge while the labels/lists (which keep `margin: 0 auto` from
+// the wrapper rule) center, producing a visible misalignment between
+// the divider and the labels below it.
 main > hr {
-  margin: 4em 0;
+  margin: 2em auto;
 }
 
 /* Typography helpers */

@@ -4,12 +4,12 @@
 // default; replaced 2026-06-02 to align with stephango.com's home page.
 
 .tag {
-  color: var(--color-muted);
+  color: var(--color-tx-normal);
   text-decoration: underline;
   text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
 
   &:hover {
-    color: var(--color-primary);
+    color: var(--color-action);
   }
 }
