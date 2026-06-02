@@ -133,6 +133,13 @@ hr {
   background: var(--color-ui-normal);
 }
 
+// Top-level dividers in <main> (section breaks between Latest / Topics /
+// Writing on the home page) get more breathing room — matches Steph's
+// `main > hr { margin: 4em 0 }`.
+main > hr {
+  margin: 4em 0;
+}
+
 /* Typography helpers */
 .muted { color: var(--color-tx-muted); }
 .faint { color: var(--color-tx-faint); }

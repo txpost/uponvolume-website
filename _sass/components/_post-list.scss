@@ -1,11 +1,11 @@
 // Home-page sections: hero, topic list, writing archive.
-// Aligned 2026-06-02 to match stephango.com's home page styling.
+// Sized + spaced to match stephango.com (compiled CSS diff 2026-06-03).
+// The h2 inside .post-hero deliberately uses the default global h2 styling
+// (Steph applies no override); only the surrounding chrome is custom.
 
-// Section labels (Latest / Topics / Writing) all share one treatment: a small,
-// muted, sentence-case label sitting above the section content. No uppercase,
-// no special weight — just a quiet sectioning device.
+// Section labels (Latest / Topics / Writing) — quiet, muted, small.
 .section-label {
-  color: var(--color-muted);
+  color: var(--color-tx-muted);
   font-size: var(--font-smaller);
   font-weight: 400;
   margin: 0 0 1em;
@@ -13,28 +13,28 @@
   line-height: 1.3;
 }
 
-// Horizontal rules between sections. Quiet, single line, generous margin.
+// Section dividers between Latest/Topics/Writing. The global `main > hr`
+// rule (in _style.scss) gives these the larger 4em margin Steph uses;
+// .section-divider just resets the visual to a single muted line.
 hr.section-divider {
   border: 0;
-  border-top: 1px solid var(--color-outline);
-  margin: 3em 0;
+  border-top: 1px solid var(--color-ui-normal);
+  background: none;  // override the global hr's background-based line
+  height: 0;
 }
 
-// Hero block (Latest article). No borders of its own — section dividers above
-// and below carry that job. Title is large, meta is muted, preview text flows
-// directly into the "Keep reading" link.
+// Hero block (Latest article). The h2 inherits its size from the global
+// heading rules — no override here. Spacing is tight to the section label.
 .post-hero {
   margin: 1em 0 0;
   padding: 0;
 
   h2 {
-    padding: 0;
-    margin: 0 0 0.5em;
-    font-size: calc(1.2em + 0.4vw);
+    margin: 0 0 0.5em;  // override the article h2's larger top margin only
   }
 
   .post-hero-meta {
-    color: var(--color-muted);
+    color: var(--color-tx-muted);
     font-size: var(--font-smaller);
     margin: 0 0 1em;
   }
@@ -44,16 +44,15 @@ hr.section-divider {
   }
 }
 
-// Topic list — inline, comma-separated underlined links (the .tag rule
-// in content/_tags.scss handles the link styling). No grid, no chips.
+// Topic list — comma-separated underlined links (the .tag rule handles link
+// styling). Quiet inline paragraph, no grid, no chips.
 .topic-list {
   margin: 0;
   line-height: 1.8;
 }
 
-// Writing archive — flat list, no per-row borders, no year headings (Steph's
-// dates are formatted YYYY · MM inline with each row, which is the year
-// marker by inspection). Tabular numerics keep the date column aligned.
+// Writing archive — flat list, no per-row borders, no year headings.
+// Date column uses tabular-nums for vertical alignment.
 .post-list {
   list-style: none;
   padding: 0;
@@ -74,7 +73,7 @@ hr.section-divider {
   }
 
   .post-date {
-    color: var(--color-muted);
+    color: var(--color-tx-muted);
     font-size: var(--font-smaller);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;

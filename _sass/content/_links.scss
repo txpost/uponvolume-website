@@ -1,43 +1,35 @@
 * { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
+// Links — minimal styling to match stephango.com. Hover just changes color
+// (no background highlight, no box-shadow); focus subtly tints background.
+// External-link arrow on body links (.internal-link, .tag, .plain etc. opt out).
 a {
-  color: var(--color-primary);
+  color: var(--color-tx-normal);
   text-decoration: underline;
-  text-underline-position: under;
-  text-decoration-thickness: 1px;
-  border-radius: 2px;
 
   &:hover {
     color: var(--color-action);
     border-color: var(--color-action);
-    background-color: var(--color-background-hover);
-    box-shadow: 0 0 0 2px var(--color-background-hover);
   }
 
   &:focus {
     outline: none;
-    background-color: var(--color-background-hover);
-    box-shadow: 0 0 0 2px var(--color-background-hover);
+    background-color: var(--color-bg-hover);
   }
 
-  // External-link indicator arrow (skipped for plain/tag/internal/footnote links)
-  &:not(.plain):not(.tag):not(.internal-link):not(.footnote):not(.reversefootnote) {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2.5' stroke='%237A8F6F' opacity='0.6' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25' /%3E%3C/svg%3E%0A");
+  // External-link indicator arrow (skipped for plain/tag/internal/footnote links,
+  // and for hash links + root-relative paths since those go nowhere external).
+  &:not(.plain):not(.tag):not(.internal-link):not(.footnote):not(.reversefootnote):not([href^="#"]):not([href^="/"]) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2.5' stroke='gray' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25' /%3E%3C/svg%3E%0A");
     background-position: right 33%;
     background-repeat: no-repeat;
     background-size: 0.7em;
     padding-right: 0.75em;
   }
 
-  &.plain {
-    box-shadow: none;
-    background-color: transparent;
-  }
-
   &.plain,
   &.muted {
     text-decoration: none;
-    border: none;
   }
 }
 
