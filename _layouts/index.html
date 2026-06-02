@@ -16,47 +16,43 @@ layout: default
 {% if notes.size > 0 %}
   {% assign hero = notes | first %}
 
+  <hr class="section-divider">
+
   <div class="post-hero">
-    <div class="post-hero-label">Latest</div>
+    <p class="section-label">Latest</p>
     <h2><a href="{{ hero.url }}" class="internal-link plain">{{ hero.title }}</a></h2>
     <div class="post-hero-meta">
       {{ hero.date | date: "%B %-d, %Y" }}
-      {% if hero.topics %} · {% for topic in hero.topics %}<a href="/topics/{{ topic | slugify }}/" class="tag">{{ topic }}</a> {% endfor %}{% endif %}
+      {% if hero.read_time %} · {{ hero.read_time }}{% endif %}
     </div>
-    {% if hero.description %}
-      <p>{{ hero.description }}</p>
-    {% else %}
-      <p>{{ hero.excerpt | strip_html | truncatewords: 30 }}</p>
-    {% endif %}
-    <p><a href="{{ hero.url }}" class="internal-link">Keep reading &rarr;</a></p>
+    <p class="post-hero-body">
+      {% if hero.description %}{{ hero.description }}{% else %}{{ hero.excerpt | strip_html | truncatewords: 30 }}{% endif %}
+      <a href="{{ hero.url }}" class="internal-link">Keep reading &rarr;</a>
+    </p>
   </div>
 {% endif %}
 
 {% assign topics = site.notes | map: 'topics' | join: ',' | split: ',' | uniq | sort %}
-{% if topics.size > 0 %}
-  <h3>Topics</h3>
-  <div class="topic-grid">
-    {% for topic in topics %}
-      {% assign t = topic | strip %}
-      {% if t != "" %}
-        <a href="/topics/{{ t | slugify }}/" class="tag">{{ t }}</a>
-      {% endif %}
-    {% endfor %}
-  </div>
+{% assign topics_clean = "" | split: "" %}
+{% for topic in topics %}
+  {% assign t = topic | strip %}
+  {% if t != "" %}{% assign topics_clean = topics_clean | push: t %}{% endif %}
+{% endfor %}
+{% if topics_clean.size > 0 %}
+  <hr class="section-divider">
+  <p class="section-label">Topics</p>
+  <p class="topic-list">
+    {% for t in topics_clean %}<a href="/topics/{{ t | slugify }}/" class="tag">{{ t }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+  </p>
 {% endif %}
 
 {% if notes.size > 0 %}
-  <h3>Writing</h3>
-  {% assign current_year = "" %}
+  <hr class="section-divider">
+  <p class="section-label">Writing</p>
   <ul class="post-list">
     {% for post in notes %}
-      {% assign post_year = post.date | date: "%Y" %}
-      {% if post_year != current_year %}
-        <li class="post-year-heading"><strong>{{ post_year }}</strong></li>
-        {% assign current_year = post_year %}
-      {% endif %}
       <li>
-        <span class="post-date">{{ post.date | date: "%b %-d" }}</span>
+        <span class="post-date">{{ post.date | date: "%Y · %m" }}</span>
         <span class="post-title"><a href="{{ post.url }}" class="internal-link">{{ post.title }}</a></span>
       </li>
     {% endfor %}

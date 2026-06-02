@@ -1,15 +1,15 @@
+// Tags are rendered inline — comma-separated underlined links, not pill chips.
+// Matches stephango.com's idiom: tag is just a link that happens to point to a
+// topic page. The chip-style "tag" used to live here was the slashpackaging
+// default; replaced 2026-06-02 to align with stephango.com's home page.
+
 .tag {
-  border: 1px solid var(--color-outline);
-  padding: 0.1em 0.5em 0.15em;
-  border-radius: 1em;
-  font-size: var(--font-smallest);
   color: var(--color-muted);
-  line-height: 2;
-  text-decoration: none;
-  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
 
   &:hover {
-    box-shadow: none;
-    border-radius: 1em;
+    color: var(--color-primary);
   }
 }
