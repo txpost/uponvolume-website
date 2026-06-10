@@ -1,11 +1,11 @@
 name:                Trevor
 title:               up on volume
 author:              Trevor
-twitter:             UpOnVolume
+twitter:             uponvolume
 domain:              uponvolume.com
 url:                 https://uponvolume.com
 include:             ['_pages']
-metadescription:     "Trader notes and writing by Trevor."
+metadescription:     "notes to self about how to learn how to make money in stocks, building a solo-founder business, and other things I find interesting"
 
 # baseurl is empty when the site is served at the apex domain (uponvolume.com).
 baseurl:             ''
