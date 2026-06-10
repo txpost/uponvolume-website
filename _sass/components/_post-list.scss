@@ -83,6 +83,11 @@ hr.section-divider {
   margin: 0;
 
   li {
+    // Override the global `ul > li { list-style: disc }` (specificity 0,0,2),
+    // which otherwise beats `.post-list { list-style: none }` on the <ul> and
+    // re-applies a marker to each <li> — reserving marker-box space that nudges
+    // the row content right of the page header. Set it on the <li> directly.
+    list-style: none;
     display: flex;
     align-items: baseline;
     gap: 0.5em;
