@@ -2,14 +2,14 @@
 title: Move the needle
 date: 2026-06-10
 topics: [habits, writing, tom sachs]
-description: Why I write in a notebook every morning
+description: Why I write in a notebook every morning.
 ---
 
 I started writing in a paper notebook every morning while I drink my coffee.
 
 I write in bullet points and then try to end every session with three takeaways that will help me move the needle that day.
 
-By move the needle, I mean three items that I can do today thay will move me closer to achieving my goals.
+By move the needle, I mean three items that I can do today that will move me closer to achieving my goals.
 
 The freeform bullet points leading up to the takeaways are a way for me to align myself with what I’m trying to accomplish. They help keep me focused. They remind me each day what I’m working towards and also provide a daily space for new creative ideas.
 

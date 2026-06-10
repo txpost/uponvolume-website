@@ -40,7 +40,9 @@ body {
 nav,
 footer,
 article,
-heading,
+main > h1,
+main > h2,
+main > h3,
 main > .post-hero,
 main > .post-hero-link,
 main > .post-list,
@@ -81,6 +83,28 @@ small {
   font-size: var(--font-smaller);
   line-height: 1.4;
   color: var(--color-tx-muted);
+}
+
+// Post header meta row (date · topics) under the title. Muted gray and set off
+// from the body with extra space below the whole header block.
+.post-meta {
+  font-size: var(--font-smaller);
+  color: var(--color-tx-muted);
+  margin-bottom: 2.5em;
+
+  time {
+    color: var(--color-tx-muted);
+  }
+
+  // Topic links read as part of the muted row, not full-strength links —
+  // they brighten to the action color on hover.
+  .tag {
+    color: var(--color-tx-muted);
+
+    &:hover {
+      color: var(--color-action);
+    }
+  }
 }
 
 img {
