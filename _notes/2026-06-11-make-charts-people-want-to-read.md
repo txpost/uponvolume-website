@@ -2,7 +2,7 @@
 title: Make charts people want to read
 date: 2026-06-11
 topics: [charts, paul graham, ycombinator]
-description: My motto
+description: I came up with a new personal motto.
 ---
 
 I’m stealing this from Paul Graham.
