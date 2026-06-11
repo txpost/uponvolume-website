@@ -56,6 +56,23 @@ main > hr.section-divider {
   margin-right: auto;
 }
 
+// Headings carry a larger font-size, so the shared `width: 37em` resolves
+// against the heading's *own* font (not the body's) and produces a wider
+// centered box than nav / list / footer — its left edge juts out to the left
+// (visible on the /topics/<tag>/ "All / Charts" header). `rem` is no good
+// either: the page uses the 62.5% root trick, so 37rem = 370px, way too narrow.
+// Pin the heading wrap width to 37 *body* ems by reusing the body's own
+// font-size calc (_style.scss line ~32), so the box matches the body-text
+// columns exactly at every viewport. Mobile (<=860px) uses 88vw, which is
+// font-size-independent, so this only applies at the desktop breakpoint.
+@media (min-width: 861px) {
+  main > h1,
+  main > h2,
+  main > h3 {
+    width: calc(37 * (1.5rem + 0.25vw));
+  }
+}
+
 nav {
   margin: 0 auto 3em;  // Steph: nav sits flush, no border below
 }
