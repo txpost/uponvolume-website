@@ -1,7 +1,7 @@
 ---
 title: Make charts people want to read
 date: 2026-06-11
-topics: [charts, paul graham, ycombinator]
+topics: [charts, paul graham, motto]
 description: I have a new personal motto.
 ---
 
