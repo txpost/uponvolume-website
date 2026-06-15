@@ -1,18 +1,18 @@
 ---
 title: Move the needle
 date: 2026-06-10
-topics: [habits, writing, tom sachs]
+topics: [habits, writing, tom sachs, morning pages]
 description: Why I write in a notebook every morning.
 ---
 
-I started writing in a paper notebook every morning while I drink my coffee.
+I write in a notebook every morning while I drink my coffee.
 
-I write in bullet points and then try to end every session with three takeaways that will help me move the needle that day.
+I write about work and anything that comes to mind, then I end each session with three takeaways.
 
-By move the needle, I mean three items that I can do today that will move me closer to achieving my goals.
+Those three items are anything that will move me forward that day. Anything that moves the needle.
 
-The freeform bullet points leading up to the takeaways are a way for me to align myself with what I’m trying to accomplish. They help keep me focused. They remind me each day what I’m working towards and also provide a daily space for new creative ideas.
+The writing keeps me aligned with what I'm working on. It helps keeps me focused. It keeps what I'm working on at the top of my mind. The practice also provides space for new ideas to emerge.
 
-I used to do morning pages but they never stuck. I recently stole this idea for a morning routine from Tom Sachs who names the ritual as output before input.
+Tom Sachs names this ritual output before input. It's about getting stuff out before taking stuff in each day. Morning pages provide a similar idea.
 
-If I’m stuck in the morning sometimes I look back through old pages to find interesting threads and ideas. I underline key phrases that I think are important and worth remembering. Sometimes I turn them into blog posts.
+If I’m stuck, I look back through old notes. I underline key points. Sometimes I turn them into blog posts.
