@@ -35,9 +35,9 @@ And here's what I think makes a good chart:
 
 I want to look at a chart and get it right away.
 
-I want to tab through images as though they are slides to understand the big picture.
+I want to tab through images as though they are slides.
 
-I think a good measure for the best charts is when I want to print a chart off and frame it on my wall.
+I think a good measure for the best charts is if I want to print a chart off and frame it on my wall.
 
 It's important to find your own style and taste, but it needs to align with making charts that people want to read.
 

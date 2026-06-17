@@ -11,7 +11,7 @@ I write about work and anything that comes to mind, then I end each session with
 
 Those three items are anything that will move me forward that day. Anything that moves the needle.
 
-The writing keeps me aligned with what I'm working on. It helps keeps me focused. It keeps what I'm working on at the top of my mind. The practice also provides space for new ideas to emerge.
+The writing keeps me aligned with what I'm working on. It helps keep me focused. It keeps what I'm working on at the top of my mind. The practice also provides space for new ideas to emerge.
 
 Tom Sachs names this ritual output before input. It's about getting stuff out before taking stuff in each day. Morning pages provide a similar idea.
 
