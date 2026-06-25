@@ -40,50 +40,85 @@
   --flexoki-yellow-900:      #3A2D04;
 
   // ---- Layout + typography --------------------------------------------------
-  --font-family: -apple-system, BlinkMacSystemFont, "Inter", "IBM Plex Sans", Segoe UI, Helvetica, Arial,
-    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  // Font stack — EXACT match to chartsdb's computed --font-sans (measured off
+  // the live rendered page, 2026-06-25), including the "system-ui" generic.
+  --font-family: -apple-system, "system-ui", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
   --font-content: var(--font-family);
-  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", "IBM Plex Mono", "Roboto Mono", Menlo, Monaco, "Consolas", "Source Code Pro", monospace;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
 
-  --border-radius: 4px;
+  --border-radius: 6px;  // chartsdb --radius-md
 
   --font-small:    0.875em;
-  --font-smaller:  0.8em;
+  --font-smaller:  14px;     // chartsdb row-date / measured 14px
   --font-smallest: 0.75em;
-  --line-height:   1.5;
+  --line-height:   1.65;     // chartsdb body lh 26.4px @16px
 
-  // Page widths — these match stephango.com exactly. --wrap-normal is the
-  // body / paragraph width (37em ≈ 593px at base font); --wrap-wide is for
-  // wider blocks like figures and the post hero. Replaces the previous
-  // --paragraph-max-width: 35em.
-  --wrap-normal: 37em;
-  --wrap-wide:   54em;
+  // ---- chartsdb spacing — MEASURED off the live page (no assumptions) -------
+  // .lp-doc pad 56/28; p margin-bottom 21; h2 mt 42 / mb 10.5; list pad-left
+  // 21, li mb 7; row pad 10.5; footer pad-top 24.5.
+  --cdb-pad-block:  56px;    // .lp-doc top/bottom padding
+  --cdb-gutter:     28px;    // .lp-doc left padding
+  --cdb-p-gap:      21px;    // paragraph margin-bottom
+  --cdb-h2-top:     42px;    // section heading margin-top
+  --cdb-h2-bottom:  10.5px;  // section heading margin-bottom
+  --cdb-list-pad:   21px;    // list padding-left
+  --cdb-li-gap:     7px;     // list item margin-bottom
+  --cdb-row-pad:    10.5px;  // writing-row padding top/bottom
+
+  // Page widths — aligned to chartsdb (2026-06-25 sibling pass). chartsdb's
+  // reading measure is 40rem @16px = 640px. uponvolume uses the 62.5% root
+  // trick (html font-size: 62.5% → 1rem = 10px), so 640px = 64rem here. Pinned
+  // in px-equivalent rem to match chartsdb's line length exactly.
+  // Measured off chartsdb's live .blog-doc (2026-06-25): frame 1176px centered,
+  // 28px gutter, content reading measure 560px. uponvolume uses the 62.5% root
+  // trick (1rem = 10px), so these are in px-equivalent rem.
+  // Frame = the reading measure + gutters, so the whole column CENTERS in the
+  // viewport (a deliberate departure from chartsdb's wide-frame/left-pinned
+  // model — uponvolume reads more balanced as a personal site). 560 + 2×28.
+  --wrap-frame:  61.6rem;  // 616px — content measure + gutters, centered
+  --wrap-normal: 56rem;    // 560px — reading measure
+  --wrap-wide:   86rem;    // 860px — wider bound for figures / hero
   --paragraph-max-width: var(--wrap-normal); // back-compat alias
-  --heading-weight: 500;
+  --heading-weight: 600;  // chartsdb headings are 600/700; was 500
 
   @media (max-width: 860px) {
     --wrap-normal: 88vw;
     --wrap-wide:   100vw;
-    --heading-weight: 600;
+    --heading-weight: 700;
   }
 }
 
 // ---- Light theme (default) --------------------------------------------------
 :root,
 .theme-light {
-  // Steph's canonical names — preferred going forward
-  --color-bg-primary:    var(--flexoki-paper);
-  --color-bg-secondary:  var(--flexoki-50);
-  --color-tx-normal:     var(--flexoki-black);
-  --color-tx-muted:      var(--flexoki-600);
-  --color-tx-faint:      var(--flexoki-300);
-  --color-ui-normal:     var(--flexoki-100);
-  --color-ui-hover:      var(--flexoki-150);
-  --color-ui-active:     var(--flexoki-200);
+  // ---- chartsdb sibling palette (2026-06-25) -------------------------------
+  // Light theme now matches chartsdb's background + warm-grey neutral ramp
+  // (tokens.css) so the two sites read as siblings. The CYAN accent is kept as
+  // uponvolume's identity marker (chartsdb uses yellow). The Flexoki raw ramp
+  // above is retained for the dark theme + the cyan/red/yellow signal hues.
+  --cdb-bg:        #ffffff;  // chartsdb PUBLIC pages render on white (.blog-page
+                             // / .lp-root), NOT the #f7f7f5 app canvas. This was
+                             // the gray-vs-white mismatch.
+  --cdb-bg-subtle: #fbfbfa;
+  --cdb-ink:       #1c1c1e;  // chartsdb --neutral-900 (BRAND ink)
+  --cdb-muted:     #6b6b66;  // chartsdb --neutral-600
+  --cdb-faint:     #9a9a9a;  // chartsdb --neutral-500 (exact; was #9a9a93)
+  --cdb-rule:      #e4e3df;  // chartsdb --neutral-300 (warm-grey rule)
+  --cdb-rule-hover:#efeeea;  // chartsdb --neutral-200
+  --cdb-rule-strong:#cbcac4; // chartsdb --neutral-400
+
+  --color-bg-primary:    var(--cdb-bg);
+  --color-bg-secondary:  var(--cdb-bg-subtle);
+  --color-tx-normal:     var(--cdb-ink);
+  --color-tx-muted:      var(--cdb-muted);
+  --color-tx-faint:      var(--cdb-faint);
+  --color-ui-normal:     var(--cdb-rule);
+  --color-ui-hover:      var(--cdb-rule-hover);
+  --color-ui-active:     var(--cdb-rule-strong);
   --color-highlight:     var(--flexoki-yellow-100);
   --color-bg-hover:      var(--flexoki-cyan-50);
   --color-selection:     rgba(187, 220, 206, 0.3);
-  --color-action:        var(--flexoki-cyan-600);
+  --color-action:        var(--flexoki-cyan-600);   // CYAN — uponvolume's identity
   --color-action-hover:  var(--flexoki-cyan-400);
 
   // Back-compat aliases — match the old variable names used elsewhere in
@@ -101,32 +136,6 @@
   --color-action-faint:         var(--color-action-hover);
 }
 
-// ---- Dark theme -------------------------------------------------------------
-.theme-dark {
-  --color-bg-primary:    var(--flexoki-black);
-  --color-bg-secondary:  var(--flexoki-950);
-  --color-tx-normal:     var(--flexoki-200);
-  --color-tx-muted:      var(--flexoki-500);
-  --color-tx-faint:      var(--flexoki-700);
-  --color-ui-normal:     var(--flexoki-900);
-  --color-ui-hover:      var(--flexoki-850);
-  --color-ui-active:     var(--flexoki-800);
-  --color-highlight:     var(--flexoki-yellow-900);
-  --color-bg-hover:      var(--flexoki-cyan-950);
-  --color-selection:     rgba(30, 95, 91, 0.3);
-  --color-action:        var(--flexoki-cyan-400);
-  --color-action-hover:  var(--flexoki-cyan-600);
-
-  // Back-compat aliases
-  --color-background-primary:   var(--color-bg-primary);
-  --color-background-secondary: var(--color-bg-secondary);
-  --color-background-hover:     var(--color-bg-hover);
-  --color-primary:              var(--color-tx-normal);
-  --color-muted:                var(--color-tx-muted);
-  --color-faint:                var(--color-tx-faint);
-  --color-outline:              var(--color-ui-normal);
-  --color-outline-hover:        var(--color-ui-hover);
-  --color-outline-active:       var(--color-ui-active);
-  --color-action-muted:         var(--color-action-hover);
-  --color-action-faint:         var(--color-action-hover);
-}
+// (Dark theme removed 2026-06-25 — the site is light-only now; the toggle and
+// its .theme-dark block were dropped. The Flexoki dark hues remain in the raw
+// palette above if a dark mode is ever reintroduced.)
