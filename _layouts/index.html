@@ -2,58 +2,40 @@
 layout: default
 ---
 
-{% assign trimmed = content | strip %}
-{% if trimmed != "" %}
-<article>
-  {{ content }}
-</article>
-{% endif %}
-
 {% assign notes = site.notes | sort: 'date' | reverse %}
 
-{% if notes.size > 0 %}
-  {% assign hero = notes | first %}
+{% comment %}
+  Homepage = three sections: About, Now, Writing. (Rewritten 2026-06-25 to
+  match the chartsdb structure — dropped the Latest hero + Topics list; the
+  standalone /about and /now pages were folded in here as sections.)
+{% endcomment %}
 
-  <a href="{{ hero.url }}" class="post-hero-link plain">
-    <div class="post-hero">
-      <p class="section-label">Latest</p>
-      <h2>{{ hero.title }}</h2>
-      <div class="post-hero-meta">
-        {{ hero.date | date: "%B %-d, %Y" }}
-        {% if hero.read_time %} · {{ hero.read_time }}{% endif %}
-      </div>
-      <p class="post-hero-body">
-        {% if hero.description %}{{ hero.description }}{% else %}{{ hero.excerpt | strip_html | truncatewords: 30 }}{% endif %}
-        Keep reading &rarr;
-      </p>
-    </div>
-  </a>
-{% endif %}
-
-{% assign topics = site.notes | map: 'topics' | join: ',' | split: ',' | uniq | sort %}
-{% assign topics_clean = "" | split: "" %}
-{% for topic in topics %}
-  {% assign t = topic | strip %}
-  {% if t != "" %}{% assign topics_clean = topics_clean | push: t %}{% endif %}
-{% endfor %}
-{% if topics_clean.size > 0 %}
-  <hr class="section-divider">
-  <p class="section-label">Topics</p>
-  <p class="topic-list">
-    {% for t in topics_clean %}<a href="/topics/{{ t | slugify }}/" class="tag">{{ t }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+<section class="home-section">
+  <h2 class="section-label">About</h2>
+  <p>
+    I'm Trevor. I like to build things. I'm a software engineer learning how to trade. Find me on
+    <a href="https://twitter.com/uponvolume" class="plain-link">X</a>.
   </p>
-{% endif %}
+</section>
+
+<section class="home-section">
+  <h2 class="section-label">What I'm working on</h2>
+  <p>
+    I'm building <a href="https://chartsdb.com" class="plain-link">ChartsDB</a>, a charts database
+    for traders. It's like Pinboard for charts.
+  </p>
+</section>
 
 {% if notes.size > 0 %}
-  <hr class="section-divider">
-  <p class="section-label">Writing</p>
+<section class="home-section">
+  <h2 class="section-label">Writing</h2>
   <ul class="post-list">
     {% for post in notes %}
       <li>
-        <span class="post-date">{{ post.date | date: "%Y · %m" }}</span>
         <span class="post-title"><a href="{{ post.url }}" class="internal-link">{{ post.title }}</a></span>
+        <span class="post-date">{{ post.date | date: "%B %-d, %Y" }}</span>
       </li>
     {% endfor %}
   </ul>
-  <hr class="section-divider">
+</section>
 {% endif %}

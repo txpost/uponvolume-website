@@ -12,24 +12,26 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 0;
 }
 
+// h1 — EXACT match to chartsdb's page title (.blog-doc-title, measured):
+// 28px, weight 700, letter-spacing -0.28px (-0.01em), line-height 42px (1.5).
 h1 {
-  font-weight: 500;
-  font-size: 2em;
-  font-size: calc(1.35em + 0.55vw);
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  margin-top: 1.5em;
-  margin-bottom: 0.25em;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 14px;   // chartsdb .blog-doc-title margin-bottom
 }
 
+// h2 — EXACT match to chartsdb's section heading (.lp-h2, measured):
+// 16px, weight 700, no letter-spacing, lh 26.4px (1.65), mt 42 / mb 10.5.
 h2 {
-  font-weight: var(--heading-weight);
-  font-size: 1.4em;
-  font-size: calc(1em + 0.2vw);
-  letter-spacing: -0.015em;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-  line-height: 1.3;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: normal;
+  line-height: 1.65;
+  margin-top: var(--cdb-h2-top);
+  margin-bottom: var(--cdb-h2-bottom);
 }
 
 h3 {

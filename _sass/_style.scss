@@ -18,76 +18,80 @@ html {
   font-size: 62.5%;
 }
 
+// chartsdb FRAME MODEL (2026-06-25): the body is a CENTERED wide frame
+// (--wrap-frame, auto margins, gutter padding) — exactly like chartsdb's
+// .lp-doc (max-width 84rem; margin 0 auto; padding 64px 32px). Content blocks
+// inside are then LEFT-aligned at the reading measure (--wrap-normal). So on a
+// wide screen the column sits toward the middle-left of the frame, not jammed
+// against the window edge — the thing that made uponvolume feel different.
 body {
-  color-scheme: light dark;
+  color-scheme: light;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   background-color: var(--color-bg-primary);
   font-family: var(--font-content);
-  margin: 2vw auto 0 auto;
+  margin: 0 auto;                  // centered frame
+  max-width: var(--wrap-frame);    // 1176px (measured off chartsdb .blog-doc)
   line-height: var(--line-height);
-  padding: 2rem 0 24rem;
+  padding: var(--cdb-pad-block) var(--cdb-gutter) 24rem;  // 56px block / 28px gutter
   overflow-x: hidden;
-  font-size: 1.8rem;
-  font-size: calc(1.5rem + 0.25vw);
+  font-size: 16px;
   color: var(--color-tx-normal);
-  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-// Content wrappers all share the same width strategy: --wrap-normal width
-// (the readable column) with --wrap-wide as a max bound for occasional
-// wider blocks. Auto margins center them in the body.
+// Content blocks: left-aligned within the frame at the reading measure.
 nav,
-footer,
 article,
+main > section,
 main > h1,
 main > h2,
 main > h3,
-main > .post-hero,
-main > .post-hero-link,
 main > .post-list,
-main > .topic-list,
-main > .section-label,
-main > hr.section-divider {
+main > .section-label {
   display: block;
-  width: var(--wrap-normal);
-  max-width: var(--wrap-wide);
-  margin-left: auto;
+  width: 100%;
+  max-width: var(--wrap-normal);   // reading measure
+  margin-left: 0;
   margin-right: auto;
 }
 
-// Headings carry a larger font-size, so the shared `width: 37em` resolves
-// against the heading's *own* font (not the body's) and produces a wider
-// centered box than nav / list / footer — its left edge juts out to the left
-// (visible on the /topics/<tag>/ "All / Charts" header). `rem` is no good
-// either: the page uses the 62.5% root trick, so 37rem = 370px, way too narrow.
-// Pin the heading wrap width to 37 *body* ems by reusing the body's own
-// font-size calc (_style.scss line ~32), so the box matches the body-text
-// columns exactly at every viewport. Mobile (<=860px) uses 88vw, which is
-// font-size-independent, so this only applies at the desktop breakpoint.
-@media (min-width: 861px) {
-  main > h1,
-  main > h2,
-  main > h3 {
-    width: calc(37 * (1.5rem + 0.25vw));
-  }
-}
-
 nav {
-  margin: 0 auto 3em;  // Steph: nav sits flush, no border below
+  margin: 0 0 var(--cdb-h2-top) 0;  // wordmark nav, ~42px below (chartsdb section rhythm)
+
+  .header { display: flex; align-items: center; }
 }
 
 main {
   display: block;
 }
 
-footer {
-  margin-top: 2em;
-  margin-bottom: 2em;
-  padding-top: 1em;
+// Home-page sections (About / Now / Writing). No dividers — whitespace
+// separates them, like chartsdb. The section heading's own top margin (48px,
+// from h2) opens the gap; zero it on the first section so it sits flush under
+// the nav.
+.home-section {
+  margin: 0;
 
-  > div { font-size: var(--font-smaller); }
+  p:last-child { margin-bottom: 0; }
 }
+.home-section:first-of-type .section-label { margin-top: 0; }
+
+// Plain bulleted list (the Now section) — EXACT match to chartsdb .lp-list:
+// padding-left 21px, disc outside, li margin-bottom 7px.
+.plain-list {
+  margin: 0 0 var(--cdb-p-gap);
+  padding-left: var(--cdb-list-pad);
+  list-style: disc;
+  list-style-position: outside;
+
+  li {
+    margin: 0 0 var(--cdb-li-gap);
+    max-width: var(--wrap-normal);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+}
+
 
 small {
   display: inline-block;
@@ -147,6 +151,7 @@ blockquote {
 
 p {
   max-width: var(--wrap-normal);
+  margin: 0 0 var(--cdb-p-gap);  // 21px between paragraphs (measured)
 }
 
 mark {
@@ -174,17 +179,6 @@ hr {
   height: 1px;
   margin: 1.5em 0;
   background: var(--color-ui-normal);
-}
-
-// Top-level dividers in <main> (section breaks between Latest / Topics /
-// Writing on the home page) get more breathing room. NOTE: must use
-// `auto` for left/right margin so the divider stays horizontally
-// centered within <main> — using `0` here pins the divider to <main>'s
-// left edge while the labels/lists (which keep `margin: 0 auto` from
-// the wrapper rule) center, producing a visible misalignment between
-// the divider and the labels below it.
-main > hr {
-  margin: 2em auto;
 }
 
 /* Typography helpers */
